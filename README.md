@@ -30,4 +30,18 @@
   *ability to highliht most important comments
 
 # DB-JSON:
- - 
+ - Patients routes
+ *GET    /patients
+ *GET    /patients/1
+ *POST   /patients
+ *PUT    /patients/1
+ *PATCH  /patients/1
+ *DELETE /patients/1
+ 
+ - Comments routes
+ *GET    /comments
+ *GET    /comments/1
+ *POST   /comments
+ *PUT    /comments/1
+ *PATCH  /comments/1
+ *DELETE /comments/1 
