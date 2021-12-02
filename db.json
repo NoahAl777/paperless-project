@@ -36,6 +36,13 @@
       "date": "12/02/2021",
       "title": "Sports Physical",
       "content": "Recovering well from injury."
+    },
+    {
+      "patient_id": 1,
+      "date": "12/02/2021",
+      "title": "wwekrw",
+      "content": "Comment example",
+      "id": 3
     }
   ]
 }

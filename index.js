@@ -10,6 +10,7 @@ const commentsUrl = "http://localhost:3000/comments"
 // Query Selectors
 const patientList = document.querySelector(".patient-list")
 const patientForm = document.querySelector("form.patient-form")
+const commentForm = document.querySelector("form.comment-form")
 
 // Fetch Functions - Patients
 function fetchPatients() {
@@ -38,13 +39,39 @@ function fetchComments() {
     .then(json => createCommentCard(json))
 }
 
-
+function postComments(commentObj) {
+  fetch(commentsUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(commentObj)
+  })
+    .then(response => response.json())
+    .then(json => renderOneComment(json))
+}
 
 // Handle Events - Patients
 function createPatientCard(json) {
   json.forEach((patient) => {
+    createPatientList(patient)
     renderOnePatient(patient)
   })
+  displayPatientCards()
+}
+
+function createPatientList(patient) {
+  let h4 = document.createElement("h4")
+  h4.innerText = `${patient.firstName} ${patient.lastName}`
+  let button = document.createElement("button")
+  let patientList = document.querySelector("h2.patient-list")
+  patientList.append(button)
+  button.appendChild(h4)
+  clickOnPatientListItem(button)
+}
+
+function clickOnPatientListItem(button) {
+  button.addEventListener("click", (event) => console.log(event))
 }
 
 function renderOnePatient(patient) {
@@ -87,13 +114,6 @@ function createPatientObject(event) {
   postPatientProfile(patientObj)
 }
 
-// Forms
-function init() {
-  patientForm.addEventListener('submit', (event) => {
-    event.preventDefault() //prevents form default behavior (we don't want to refresh on submit)
-    createPatientObject(event)
-  })
-}
 
 // Handle Events - Comments
 function createCommentCard(json) {
@@ -108,4 +128,32 @@ function renderOneComment(comment) {
   div.innerHTML = `<h4>${comment.title} ${comment.date}</h4><p>${comment.content}</p>`
   let patientCard = document.getElementById(comment.patient_id)
   patientCard.append(div)
+}
+
+function createCommentObject(event) {
+  let commentObj = {
+    patient_id: 1,
+    date: event.target.children[2].value,
+    title: event.target.children[6].value,
+    content: event.target.children[10].value,
+  }
+  postComments(commentObj)
+}
+
+// Forms
+function init() {
+  patientForm.addEventListener('submit', (event) => {
+    event.preventDefault() //prevents form default behavior (we don't want to refresh on submit)
+    createPatientObject(event)
+  })
+  commentForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    createCommentObject(event)
+  })
+}
+
+// Handle Events - User Interaction
+function displayPatientCards() {
+  let patientCards = document.querySelectorAll("div.patient-card")
+  console.log(patientCards)
 }
