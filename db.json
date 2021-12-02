@@ -12,7 +12,7 @@
       "firstName": "Alyssa",
       "lastName": "Merrilees",
       "dateOfBirth": "09/22/2000",
-      "address": "1917 Fleming St."
+      "address": "1390 Fleming St."
     },
     {
       "firstName": "Micah",
@@ -29,6 +29,13 @@
       "date": "12/01/2021",
       "title": "Annual Checkup",
       "content": "In great shape, everything looks good!"
+    },
+    {
+      "id": 2,
+      "patient_id": 1,
+      "date": "12/02/2021",
+      "title": "Sports Physical",
+      "content": "Recovering well from injury."
     }
   ]
 }

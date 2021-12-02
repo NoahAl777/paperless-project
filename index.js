@@ -56,21 +56,23 @@ function renderOnePatient(patient) {
 }
 
 function addPatientInfo(patient, h4) {
+  let patientCard = h4.parentElement
   Object.keys(patient).forEach((data) => {
     // debugger
-    let patientCard = h4.parentElement
     if (data !== "id") {
       let ul = document.createElement("ul")
       let li = document.createElement("li")
       li.innerText = `${data}: ${patient[data]}`
       ul.appendChild(li)
-      // debugger
       patientCard.append(ul)
     }
     else {
       patientCard.id = patient[data]
     }
   })
+  let commentsHeader = document.createElement('h4')
+  commentsHeader.innerText = "Doctor's Comments"
+  patientCard.append(commentsHeader)
 }
 
 function init() {
@@ -88,5 +90,16 @@ function init() {
 
 // Handle Events - Comments
 function createCommentCard(json) {
-  console.log(json)
+  json.forEach((comment) => {
+    renderOneComment(comment)
+  })
+}
+
+function renderOneComment(comment) {
+  let div = document.createElement("div")
+  div.className = "comment-card"
+  console.log(comment)
+  div.innerHTML = `<h4>${comment.title} ${comment.date}</h4><p>${comment.content}</p>`
+  let patientCard = document.getElementById(comment.patient_id)
+  patientCard.append(div)
 }
