@@ -9,7 +9,7 @@ const commentsUrl = "http://localhost:3000/comments"
 
 // Query Selectors
 const patientList = document.querySelector(".patient-list")
-const inputForm = document.querySelector("form")
+const patientForm = document.querySelector("form.patient-form")
 
 // Fetch Functions - Patients
 function fetchPatients() {
@@ -37,6 +37,8 @@ function fetchComments() {
     .then(response => response.json())
     .then(json => createCommentCard(json))
 }
+
+
 
 // Handle Events - Patients
 function createPatientCard(json) {
@@ -75,16 +77,21 @@ function addPatientInfo(patient, h4) {
   patientCard.append(commentsHeader)
 }
 
+function createPatientObject(event) {
+  let patientObj = {
+    firstName: event.target.children[2].value,
+    lastName: event.target.children[6].value,
+    dateOfBirth: event.target.children[10].value,
+    address: event.target.children[14].value
+  }
+  postPatientProfile(patientObj)
+}
+
+// Forms
 function init() {
-  inputForm.addEventListener('submit', (event) => {
+  patientForm.addEventListener('submit', (event) => {
     event.preventDefault() //prevents form default behavior (we don't want to refresh on submit)
-    let patientObj = {
-      firstName: event.target.children[2].value,
-      lastName: event.target.children[6].value,
-      dateOfBirth: event.target.children[10].value,
-      address: event.target.children[14].value
-    }
-    postPatientProfile(patientObj)
+    createPatientObject(event)
   })
 }
 
@@ -98,7 +105,6 @@ function createCommentCard(json) {
 function renderOneComment(comment) {
   let div = document.createElement("div")
   div.className = "comment-card"
-  console.log(comment)
   div.innerHTML = `<h4>${comment.title} ${comment.date}</h4><p>${comment.content}</p>`
   let patientCard = document.getElementById(comment.patient_id)
   patientCard.append(div)
