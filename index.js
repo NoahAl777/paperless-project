@@ -1,7 +1,6 @@
 // On load
 document.addEventListener('DOMContentLoaded', fetchPatients)
 document.addEventListener('DOMContentLoaded', init)
-// document.addEventListener('DOMContentLoaded', fetchComments)
 
 // Urls
 const patientsUrl = "http://localhost:3000/patients"
@@ -55,7 +54,6 @@ function postComments(commentObj) {
 function createPatientCard(json) {
   json.forEach((patient) => {
     createPatientList(patient)
-    // renderOnePatient(patient)
   })
 }
 
@@ -150,19 +148,26 @@ function renderOneComment(comment) {
 }
 
 function createCommentObject(event) {
-  let commentObj = {
-    patient_id: 1,
-    date: event.target.children[2].value,
-    title: event.target.children[6].value,
-    content: event.target.children[10].value,
+  const patientCard = document.querySelector('div.patient-card')
+  if (patientCard != null) {
+    let commentObj = {
+      patient_id: parseInt(patientCard.id),
+      date: event.target.children[2].value,
+      title: event.target.children[6].value,
+      content: event.target.children[10].value,
+    }
+    postComments(commentObj)
   }
-  postComments(commentObj)
 }
 
 
 function renderCommentOnListSelection(comment) {
   const buttons = document.querySelectorAll('button')
   buttons.forEach((button) => button.addEventListener('click', renderOneComment(comment)))
+}
+
+function setCommentFormPatientId(patient) {
+
 }
 
 // Forms
