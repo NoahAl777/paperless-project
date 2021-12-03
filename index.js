@@ -55,9 +55,8 @@ function postComments(commentObj) {
 function createPatientCard(json) {
   json.forEach((patient) => {
     createPatientList(patient)
-    renderOnePatient(patient)
+    // renderOnePatient(patient)
   })
-  displayPatientCards()
 }
 
 function createPatientList(patient) {
@@ -67,11 +66,29 @@ function createPatientList(patient) {
   let patientList = document.querySelector("h2.patient-list")
   patientList.append(button)
   button.appendChild(h4)
-  clickOnPatientListItem(button)
+  clickOnPatientListItem(button, patient)
 }
 
-function clickOnPatientListItem(button) {
-  button.addEventListener("click", (event) => console.log(event))
+function clickOnPatientListItem(button, patient) {
+  button.addEventListener("click", (event) => {
+    checkIfAlreadyRendered(patient)
+  })
+}
+
+function checkIfAlreadyRendered(patient) {
+  let allPatientCards = document.querySelectorAll("div.patient-card")
+  if (allPatientCards.length === 0) {
+    renderOnePatient(patient)
+  }
+  else if (allPatientCards.length > 0) {
+    let ids = []
+    allPatientCards.forEach(card => ids.push(parseInt(card.id)))
+    if (!ids.includes(patient.id)) {
+      c = document.querySelector('div.patient-card')
+      c.remove()
+      renderOnePatient(patient)
+    }
+  }
 }
 
 function renderOnePatient(patient) {
@@ -118,7 +135,8 @@ function createPatientObject(event) {
 // Handle Events - Comments
 function createCommentCard(json) {
   json.forEach((comment) => {
-    renderOneComment(comment)
+    // renderOneComment(comment)
+    console.log(comment)
   })
 }
 
@@ -153,7 +171,3 @@ function init() {
 }
 
 // Handle Events - User Interaction
-function displayPatientCards() {
-  let patientCards = document.querySelectorAll("div.patient-card")
-  console.log(patientCards)
-}
