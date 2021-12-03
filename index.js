@@ -28,7 +28,7 @@ function postPatientProfile(patientObj) {
     body: JSON.stringify(patientObj)
   })
     .then(response => response.json())
-    .then(json => renderOnePatient(json))
+    .then(json => createPatientList(json))
 }
 
 // Fetch Functions - Comments
