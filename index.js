@@ -1,7 +1,7 @@
 // On load
 document.addEventListener('DOMContentLoaded', fetchPatients)
 document.addEventListener('DOMContentLoaded', init)
-document.addEventListener('DOMContentLoaded', fetchComments)
+// document.addEventListener('DOMContentLoaded', fetchComments)
 
 // Urls
 const patientsUrl = "http://localhost:3000/patients"
@@ -33,10 +33,10 @@ function postPatientProfile(patientObj) {
 }
 
 // Fetch Functions - Comments
-function fetchComments() {
+function fetchComments(patient) {
   fetch(commentsUrl)
     .then(response => response.json())
-    .then(json => createCommentCard(json))
+    .then(json => createCommentCard(json, patient))
 }
 
 function postComments(commentObj) {
@@ -119,6 +119,7 @@ function addPatientInfo(patient, h4) {
   let commentsHeader = document.createElement('h4')
   commentsHeader.innerText = "Doctor's Comments"
   patientCard.append(commentsHeader)
+  fetchComments(patient)
 }
 
 function createPatientObject(event) {
@@ -133,10 +134,10 @@ function createPatientObject(event) {
 
 
 // Handle Events - Comments
-function createCommentCard(json) {
-  json.forEach((comment) => {
-    // renderOneComment(comment)
-    console.log(comment)
+function createCommentCard(json, patient) {
+  const filteredComments = json.filter((comment) => parseInt(comment.patient_id) == parseInt(patient.id))
+  filteredComments.forEach((comment) => {
+    renderOneComment(comment)
   })
 }
 
@@ -156,6 +157,12 @@ function createCommentObject(event) {
     content: event.target.children[10].value,
   }
   postComments(commentObj)
+}
+
+
+function renderCommentOnListSelection(comment) {
+  const buttons = document.querySelectorAll('button')
+  buttons.forEach((button) => button.addEventListener('click', renderOneComment(comment)))
 }
 
 // Forms
