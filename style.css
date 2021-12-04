@@ -1,7 +1,82 @@
 body {
   background-color: #7FDBFF;
+  position: relative;
+  left: 200px;
+  width: 1000px;
+}
+
+h1.main-header{
+  text-align: center;
 }
 
 .hidden {
   opacity: 0;
+}
+
+div h2.patient-list{
+ margin-bottom: 25px;
+}
+
+.patient-list{
+  display: flex;
+  flex-flow: column;
+  width: 135px;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+  overflow-y: auto;
+  height: 500px;
+}
+
+.patient-list button{
+  margin-top: 10px;
+}
+.all-patients{
+  position: relative;
+  top: 35px;
+}
+
+.patient-card {
+  background-color: azure;
+  position: absolute;
+  margin-left: 210px;
+  padding-left: 30px;
+  width: 500px;
+  justify-content: center;
+  top: 10px;
+  z-index: -1;
+}
+
+.comment-card {
+  padding-left: 20px;
+  width: 350px;
+  border-style: solid none none none;
+  border-width: 2px;
+  border-top-color: black;
+}
+
+div.patient-form h3{
+  display: flex;
+  position: absolute;
+  padding-left: 400px;
+  top: 35px;
+}
+
+div.comment-form{
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  padding-left: 800px;
+  top: 350px;
+}
+
+div.patient-form{
+  position: absolute;
+  top: 35px;
+}
+
+.patient-form{
+  position: absolute;
+  padding-left: 400px;
+  top: 100px;
 }
