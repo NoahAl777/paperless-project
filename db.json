@@ -5,21 +5,24 @@
       "firstName": "Noah",
       "lastName": "Alston",
       "dateOfBirth": "02/09/2001",
-      "address": "3451 Citation Dr."
+      "address": "3451 Citation Dr.",
+      "phone": "(904)428-2364",
+      "email": "noah@gmail.com",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "insurance": "Blue Cross"
     },
     {
       "id": 2,
       "firstName": "Alyssa",
       "lastName": "Merrilees",
       "dateOfBirth": "09/22/2000",
-      "address": "1390 Fleming St."
-    },
-    {
-      "firstName": "Micah",
-      "lastName": "Alston",
-      "dateOfBirth": "09/09/2003",
-      "address": "3451 Citation Dr.",
-      "id": 3
+      "address": "1390 Fleming St.",
+      "phone": "(908)861-7474",
+      "email": "alyssa@gmail.com",
+      "gender": "Female",
+      "maritalStatus": "Single",
+      "insurance": "Red Cross"
     }
   ],
   "comments": [
