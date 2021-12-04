@@ -125,7 +125,12 @@ function createPatientObject(event) {
     firstName: event.target.children[2].value,
     lastName: event.target.children[6].value,
     dateOfBirth: event.target.children[10].value,
-    address: event.target.children[14].value
+    address: event.target.children[14].value,
+    phone: event.target.children[18].value,
+    email: event.target.children[22].value,
+    gender: event.target.children[26].value,
+    maritalStatus: event.target.children[30].value,
+    insurance: event.target.children[34].value
   }
   postPatientProfile(patientObj)
 }

@@ -7,8 +7,8 @@
       "dateOfBirth": "02/09/2001",
       "address": "3451 Citation Dr.",
       "phone": "(904)428-2364",
-      "email": "noah@gmail.com",
       "gender": "Male",
+      "email": "noah@gmail.com",
       "maritalStatus": "Single",
       "insurance": "Blue Cross"
     },
@@ -19,10 +19,22 @@
       "dateOfBirth": "09/22/2000",
       "address": "1390 Fleming St.",
       "phone": "(908)861-7474",
-      "email": "alyssa@gmail.com",
       "gender": "Female",
+      "email": "alyssa@gmail.com",
       "maritalStatus": "Single",
       "insurance": "Red Cross"
+    },
+    {
+      "firstName": "Micah",
+      "lastName": "Alston",
+      "dateOfBirth": "09/09/2003",
+      "address": "3451 Citation Dr.",
+      "phone": "(904) 428-2364",
+      "email": "l@email.com",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "insurance": "Yellow Cross",
+      "id": 3
     }
   ],
   "comments": [
