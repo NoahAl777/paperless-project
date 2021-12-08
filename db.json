@@ -58,6 +58,13 @@
       "title": "wwekrw",
       "content": "Comment example",
       "id": 3
+    },
+    {
+      "patient_id": 3,
+      "date": "12/02/2021",
+      "title": "New visit",
+      "content": "Everything well",
+      "id": 4
     }
   ]
 }

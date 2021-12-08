@@ -1,6 +1,8 @@
 // On load
-document.addEventListener('DOMContentLoaded', fetchPatients)
-document.addEventListener('DOMContentLoaded', init)
+document.addEventListener('DOMContentLoaded', () => {
+  fetchPatients()
+  init()
+})
 
 // Urls
 const patientsUrl = "http://localhost:3000/patients"
