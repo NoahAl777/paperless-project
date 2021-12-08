@@ -1,4 +1,4 @@
-# paperless-project
+# Paperless-project
 ![Paperless Project](https://user-images.githubusercontent.com/64996269/145150982-5711c89f-36cd-49c8-88f7-484320c865dd.PNG)
 
 # Description:
